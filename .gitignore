@@ -11,3 +11,6 @@ typings
 typings/*
 .vscode
 config.ts
+
+*.js
+*.js.map
