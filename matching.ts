@@ -1,8 +1,9 @@
-/// <reference path="typings/index.d.ts" />
 import {matchingAndes} from './matchingAndes';
 import {matchingJaroWinkler} from './matchingJaroWinkler';
 import {matchingMetaphone} from './matchingMetaphone';
 import {matchingSoundexES} from './matchingSoundexES';
+import {metaphoneES} from './metaphoneES';
+import {soundexES} from './soundexES';
 
 
 
@@ -176,6 +177,47 @@ export class matching {
 
         })
 
+
+    }
+
+    //Se crea la clave de Blocking
+
+    crearClavesBlocking(paciente) {
+
+        var claves = [];
+
+        // var anioNacimiento = "1900";
+        // var doc = "";
+        // if (paciente["fechaNacimiento"]) {
+        //     fecha = paciente["fechaNacimiento"].split("-");
+        //     //fecha= paciente["fechaNacimiento"].toISOString().split("-");
+        //     anioNacimiento = fecha[0].toString();
+        // }
+        //
+        // if (paciente["documento"]) {
+        //     doc = paciente["documento"].substr(0, 4);
+        // }
+        //
+        // var clave = libString.obtenerConsonante(paciente.apellido, 3) + libString.obtenerConsonante(paciente.nombre, 2) +
+        //     anioNacimiento + doc;
+        //
+        // claves.push(clave);
+
+        // Se utiliza el algoritmo metaphone para generar otra clave de Blocking
+        // claves.push(paciente.clavesBlocking[0]);
+        // claves.push(paciente.clavesBlocking[1]);
+        // claves.push(paciente.clavesBlocking[2]);
+        var algMetaphone = new metaphoneES();
+        var claveApellido = algMetaphone.metaphone(paciente["apellido"]);
+        var claveNombre = algMetaphone.metaphone(paciente["nombre"]);
+        claves.push(claveApellido.slice(0, 4) + claveNombre.slice(0, 3));   //Clave 1: Formada por las primeras 4 letras del apellido y tres del nombre, con metaphone
+        claves.push(claveApellido);  //Clave 2: metaphone sobre apellido
+        claves.push(claveNombre); //Clave 3: metaphone sobre nombre
+        //Se utiliza el algoritmo soundex para generar una nueva clave de Blocking
+        var algSoundex = new soundexES();
+        claves.push(algSoundex.soundex(paciente["apellido"] + paciente["nombre"]));
+        claves.push(algSoundex.soundex(paciente["apellido"]));
+        return claves;
 
     }
 }
