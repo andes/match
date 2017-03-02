@@ -52,23 +52,23 @@ export class matching {
 
         if (algoritmo == 'Jaro Winkler') {
 
-            valor = m1.machingJaroWinkler(pacienteA, pacienteB, weights);
+            valor = m1.matchJaroWinkler(pacienteA, pacienteB, weights);
 
         }
 
         else {
             if (algoritmo == 'Metaphone') {
 
-                valor = m2.machingMetaphone(pacienteA, pacienteB, weights);
+                valor = m2.matchMetaphone(pacienteA, pacienteB, weights);
 
             } else {
                 if (algoritmo == 'Soundex') {
 
-                    valor = m4.matchingSoundex(pacienteA, pacienteB, weights);
+                    valor = m4.matchSoundex(pacienteA, pacienteB, weights);
 
                 } else {
 
-                    valor = m3.matchingAndes(pacienteA, pacienteB, weights); //Levensthein
+                    valor = m3.matchAndes(pacienteA, pacienteB, weights); //Levensthein
 
                 }
             }
@@ -128,31 +128,31 @@ export class matching {
             m4 = new matchingSoundexES();
 
             if (algoritmo == '') {
-                valorJW = m1.machingJaroWinkler(pacienteA, pacienteB, weights);
-                valorM = m2.machingMetaphone(pacienteA, pacienteB, weights);
-                valorS = m4.matchingSoundex(pacienteA, pacienteB, weights);
-                valorL = m3.maching(pacienteA, pacienteB, weights);
+                valorJW = m1.matchJaroWinkler(pacienteA, pacienteB, weights);
+                valorM = m2.matchMetaphone(pacienteA, pacienteB, weights);
+                valorS = m4.matchSoundex(pacienteA, pacienteB, weights);
+                valorL = m3.machAndes(pacienteA, pacienteB, weights);
                 listaMatch.push({ paciente1: par[0], paciente2: par[1], matchL: valorL, matchJW: valorJW, matchM: valorM, matchS: valorS });
             }
             else {
                 if (algoritmo == 'Jaro Winkler') {
 
-                    valor = m1.machingJaroWinkler(pacienteA, pacienteB, weights);
+                    valor = m1.machJaroWinkler(pacienteA, pacienteB, weights);
 
                 }
 
                 else {
                     if (algoritmo == 'Metaphone') {
 
-                        valor = m2.machingMetaphone(pacienteA, pacienteB, weights);
+                        valor = m2.machMetaphone(pacienteA, pacienteB, weights);
 
                     } else {
                         if (algoritmo == 'Soundex') {
 
-                            valor = m4.matchingSoundex(pacienteA, pacienteB, weights);
+                            valor = m4.matchSoundex(pacienteA, pacienteB, weights);
 
                         } else {
-                            valor = m3.maching(pacienteA, pacienteB, weights); //Levensthein
+                            valor = m3.matchAndes(pacienteA, pacienteB, weights); //Levensthein
 
                         }
                     }
