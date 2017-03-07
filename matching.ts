@@ -19,7 +19,7 @@ export class matching {
             return ((fecha.toString()).substring(0, 10));
     }
 
-    matchPersonas(persona1, persona2, weights, algoritmo) {
+    matchPersonas(persona1, persona2, weights, algoritmo= 'Levenshtein') {
         var pacienteA;
         var pacienteB;
         var valor: number;
