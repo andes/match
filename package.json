@@ -1,6 +1,6 @@
 {
-  "name": "andes-match",
-  "version": "0.1.4",
+  "name": "@andes/match",
+  "version": "0.1.5",
   "description": "Algoritmos de matcheo para MPI",
   "main": "index.js",
   "scripts": {
