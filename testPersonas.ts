@@ -1,4 +1,4 @@
-import {matchingAndes} from './lib/matchingAndes';
+import {matching} from './lib/matching';
 import {IPerson} from './lib/IPerson'
 import * as distance from 'jaro-winkler';
 
@@ -16,21 +16,21 @@ la idea es comparar un set de datos básicos.
 //Ejemplos de Pacientes a comparar
 
 let pacienteA = {
-	identity: "302569851",
-	firstname: "Gozalobb",
-    lastname: "Carranza",
-    birthDate: '01-01-1980',
-	gender: "male"
+	documento: "302569851",
+	nombre: "Gozalobb",
+    apellido: "Carranza",
+    // fechaNacimiento: '01-01-1980',
+	// sexo: "male"
 };
 
 let pacienteB = {
-	identity: "304869851",
-	firstname: "Horacio",
-    lastname: "Caranza",
-    birthDate: '01-01-1980',
-	gender: "male"
+	documento: 304869851,
+    apellido: "Caranza",
+    nombre: "Horacio",
+    // fechaNacimiento: '01-01-1980',
+	// sexo: "male"
 };
 
-let m1 = new matchingAndes();
-let resultado = m1.matchAndes(pacienteA, pacienteB, weights);
+let m1 = new matching();
+let resultado = m1.matchPersonas(pacienteA, pacienteB, weights,'Levensthein');
 console.log("matchig: ", resultado);

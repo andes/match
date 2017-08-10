@@ -4,7 +4,7 @@ import {matchingMetaphone} from './matchingMetaphone';
 import {matchingSoundexES} from './matchingSoundexES';
 import {metaphoneES} from './metaphoneES';
 import {soundexES} from './soundexES';
-
+import {IPerson} from './IPerson'
 
 
 export class matching {
@@ -32,23 +32,24 @@ export class matching {
         m3 = new matchingAndes();  //'Levenshtein'
         m4 = new matchingSoundexES();
         valor = 0;
-
+        console.log(persona1);
         pacienteA = {
-            identity: persona1.documento,
+            identity: persona1.documento.toString(),
             firstname: persona1.nombre,
             lastname: persona1.apellido,
             birthDate: (persona1.fechaNacimiento) ? this.convertirFecha(persona1.fechaNacimiento) : null,
             gender: (persona2.sexo) ? persona1.sexo : null
         };
 
+        console.log('paciente transformado: ', pacienteA);
+
         pacienteB = {
-            identity: persona2.documento,
+            identity: persona2.documento.toString(),
             firstname: persona2.nombre,
             lastname: persona2.apellido,
             birthDate: persona2.fechaNacimiento ? this.convertirFecha(persona2.fechaNacimiento) : null,
             gender: (persona2.sexo) ? persona2.sexo : null
         };
-
 
         if (algoritmo == 'Jaro Winkler') {
 
@@ -67,7 +68,7 @@ export class matching {
                     valor = m4.matchSoundex(pacienteA, pacienteB, weights);
 
                 } else {
-
+                    
                     valor = m3.matchAndes(pacienteA, pacienteB, weights); //Levensthein
 
                 }
