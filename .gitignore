@@ -12,5 +12,6 @@ typings/*
 .vscode
 config.ts
 
+*-lock.json
 *.js
 *.js.map

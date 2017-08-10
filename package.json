@@ -16,7 +16,8 @@
     "type": "git",
     "url": "git+https://github.com/andes/match.git"
   },
-  "keywords": [ "match",
+  "keywords": [
+    "match",
     "MPI"
   ],
   "author": "UNCOMA - ANDES TEAM",

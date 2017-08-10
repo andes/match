@@ -10,7 +10,6 @@ import {soundexES} from './soundexES';
 export class matching {
 
     convertirFecha(fecha) {
-        //console.log(fecha,typeof(fecha));
         if (typeof (fecha) != "string") {
             var fecha1 = new Date(fecha);
             return ((fecha1.toISOString()).substring(0, 10));
@@ -19,7 +18,8 @@ export class matching {
             return ((fecha.toString()).substring(0, 10));
     }
 
-    matchPersonas(persona1, persona2, weights, algoritmo= 'Levenshtein') {
+   
+    matchPersonas(persona1, persona2, weights, algoritmo) {
         var pacienteA;
         var pacienteB;
         var valor: number;
@@ -37,16 +37,16 @@ export class matching {
             identity: persona1.documento,
             firstname: persona1.nombre,
             lastname: persona1.apellido,
-            birthDate: this.convertirFecha(persona1.fechaNacimiento),
-            gender: persona1.sexo
+            birthDate: (persona1.fechaNacimiento) ? this.convertirFecha(persona1.fechaNacimiento) : null,
+            gender: (persona2.sexo) ? persona1.sexo : null
         };
 
         pacienteB = {
             identity: persona2.documento,
             firstname: persona2.nombre,
             lastname: persona2.apellido,
-            birthDate: this.convertirFecha(persona2.fechaNacimiento),
-            gender: persona2.sexo
+            birthDate: persona2.fechaNacimiento ? this.convertirFecha(persona2.fechaNacimiento) : null,
+            gender: (persona2.sexo) ? persona2.sexo : null
         };
 
 

@@ -12,7 +12,7 @@ var weights = {
 	birthDate: 0.1
 };
 
-/*Estos ejemplos de paciente están basados en un subconjunto de campos de FIHR
+/*Estos ejemplos de paciente están basados en un subconjunto de campos de FHIR
 la idea es comparar un set de datos básicos.
 */
 
