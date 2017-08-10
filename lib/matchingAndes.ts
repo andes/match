@@ -114,10 +114,7 @@ export class matchingAndes {
     public matchAndes(identidadA: IPerson, identidadB: IPerson, weights: IWeight): number {
         var completeNameA = identidadA.firstname + identidadA.lastname;
         var completeNameB = identidadB.firstname + identidadB.lastname;
-        console.log('identidad: ', identidadA);
-        console.log('nombre completo: ',completeNameA);
         var v1 = weights.name * this.levenshtein(libString.preprocessInput(completeNameA.toLocaleLowerCase()), libString.preprocessInput(completeNameB.toLowerCase()));
-        console.log(v1);
         var v2 = weights.gender;
         if (identidadA.gender != null) {
             v2 = weights.gender * this.sexMatching(identidadA.gender, identidadB.gender);

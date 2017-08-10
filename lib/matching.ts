@@ -32,7 +32,6 @@ export class matching {
         m3 = new matchingAndes();  //'Levenshtein'
         m4 = new matchingSoundexES();
         valor = 0;
-        console.log(persona1);
         pacienteA = {
             identity: persona1.documento.toString(),
             firstname: persona1.nombre,
@@ -40,8 +39,6 @@ export class matching {
             birthDate: (persona1.fechaNacimiento) ? this.convertirFecha(persona1.fechaNacimiento) : null,
             gender: (persona2.sexo) ? persona1.sexo : null
         };
-
-        console.log('paciente transformado: ', pacienteA);
 
         pacienteB = {
             identity: persona2.documento.toString(),
