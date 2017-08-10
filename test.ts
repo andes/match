@@ -1,8 +1,8 @@
-import { IPerson } from './IPerson';
-import { IWeight } from './IWeight';
-import {matchingAndes} from './matchingAndes';
-import {matchingSoundexES} from './matchingSoundexES';
-import {soundexES} from './soundexES';
+import { IPerson } from './lib/IPerson';
+import { IWeight } from './lib/IWeight';
+import {matchingAndes} from './lib/matchingAndes';
+import {matchingSoundexES} from './lib/matchingSoundexES';
+import {soundexES} from './lib/soundexES';
 import * as distance from 'jaro-winkler';
 
 var weights = {
