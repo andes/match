@@ -67,6 +67,7 @@ let m1 = new MatchingAndes();
 // var dato1 = m1.maching(pacienteA, pacienteB, weights);
 // console.log('matchig: ', dato1);
 
+// tslint:disable-next-line:no-console
 console.log('Provincia', m1.levenshtein('Neuquén', 'Nqn'));
 
 // for(var i=0;i<tests.length;i++){
