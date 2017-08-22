@@ -1,36 +1,36 @@
-import {matchingAndes} from './matchingAndes';
-import {matchingJaroWinkler} from './matchingJaroWinkler';
-import {matchingMetaphone} from './matchingMetaphone';
-import {matchingSoundexES} from './matchingSoundexES';
-import {metaphoneES} from './metaphoneES';
-import {soundexES} from './soundexES';
-import {IPerson} from './IPerson'
+import { MatchingAndes } from './MatchingAndes';
+import { MatchingJaroWinkler } from './MatchingJaroWinkler';
+import { MatchingMetaphone } from './MatchingMetaphone';
+import { MatchingSoundexES } from './MatchingSoundexES';
+import { MetaphoneES } from './MetaphoneES';
+import { SoundexES } from './SoundexES';
+import { IPerson } from './IPerson'
 
 
-export class matching {
+export class Matching {
 
     convertirFecha(fecha) {
-        if (typeof (fecha) != "string") {
-            var fecha1 = new Date(fecha);
+        if (typeof (fecha) !== 'string') {
+            let fecha1 = new Date(fecha);
             return ((fecha1.toISOString()).substring(0, 10));
-        }
-        else
+        } else {
             return ((fecha.toString()).substring(0, 10));
+        }
     }
 
-   
+
     matchPersonas(persona1, persona2, weights, algoritmo) {
-        var pacienteA;
-        var pacienteB;
-        var valor: number;
-        var m1;
-        var m2;
-        var m3;
-        var m4;
-        m1 = new matchingJaroWinkler();
-        m2 = new matchingMetaphone();
-        m3 = new matchingAndes();  //'Levenshtein'
-        m4 = new matchingSoundexES();
+        let pacienteA;
+        let pacienteB;
+        let valor: number;
+        let m1;
+        let m2;
+        let m3;
+        let m4;
+        m1 = new MatchingJaroWinkler();
+        m2 = new MatchingMetaphone();
+        m3 = new MatchingAndes();  // 'Levenshtein'
+        m4 = new MatchingSoundexES();
         valor = 0;
         pacienteA = {
             identity: persona1.documento.toString(),
@@ -48,25 +48,23 @@ export class matching {
             gender: (persona2.sexo) ? persona2.sexo : null
         };
 
-        if (algoritmo == 'Jaro Winkler') {
+        if (algoritmo === 'Jaro Winkler') {
 
             valor = m1.matchJaroWinkler(pacienteA, pacienteB, weights);
 
-        }
-
-        else {
-            if (algoritmo == 'Metaphone') {
+        } else {
+            if (algoritmo === 'Metaphone') {
 
                 valor = m2.matchMetaphone(pacienteA, pacienteB, weights);
 
             } else {
-                if (algoritmo == 'Soundex') {
+                if (algoritmo === 'Soundex') {
 
                     valor = m4.matchSoundex(pacienteA, pacienteB, weights);
 
                 } else {
-                    
-                    valor = m3.matchAndes(pacienteA, pacienteB, weights); //Levensthein
+
+                    valor = m3.matchAndes(pacienteA, pacienteB, weights); // Levensthein
 
                 }
             }
@@ -75,9 +73,6 @@ export class matching {
         }
 
         return valor;
-
-
-
     }
 
 
@@ -86,13 +81,13 @@ export class matching {
         Se guarda en la collección listaMatch el par de Paciente y el valor devuelto
         por el algoritmo de match y se persiste la información en collection*/
 
-        var pacienteA;
-        var pacienteB;
-        var valor: number;
-        var valorJW: number;
-        var valorM: number;
-        var valorL: number;
-        var valorS: number;
+        let pacienteA;
+        let pacienteB;
+        let valor: number;
+        let valorJW: number;
+        let valorM: number;
+        let valorL: number;
+        let valorS: number;
 
 
         listaPares.forEach(par => {
@@ -116,41 +111,38 @@ export class matching {
                 };
 
             }
-            var m1;
-            var m2;
-            var m3;
-            var m4;
-            m1 = new matchingJaroWinkler();
-            m2 = new matchingMetaphone();
-            m3 = new matchingAndes();  //'Levenshtein'
-            m4 = new matchingSoundexES();
+            let m1;
+            let m2;
+            let m3;
+            let m4;
+            m1 = new MatchingJaroWinkler();
+            m2 = new MatchingMetaphone();
+            m3 = new MatchingAndes();  // 'Levenshtein'
+            m4 = new MatchingSoundexES();
 
-            if (algoritmo == '') {
+            if (algoritmo === '') {
                 valorJW = m1.matchJaroWinkler(pacienteA, pacienteB, weights);
                 valorM = m2.matchMetaphone(pacienteA, pacienteB, weights);
                 valorS = m4.matchSoundex(pacienteA, pacienteB, weights);
                 valorL = m3.machAndes(pacienteA, pacienteB, weights);
                 listaMatch.push({ paciente1: par[0], paciente2: par[1], matchL: valorL, matchJW: valorJW, matchM: valorM, matchS: valorS });
-            }
-            else {
-                if (algoritmo == 'Jaro Winkler') {
+            } else {
+                if (algoritmo === 'Jaro Winkler') {
 
                     valor = m1.machJaroWinkler(pacienteA, pacienteB, weights);
 
-                }
-
-                else {
-                    if (algoritmo == 'Metaphone') {
+                } else {
+                    if (algoritmo === 'Metaphone') {
 
                         valor = m2.machMetaphone(pacienteA, pacienteB, weights);
 
                     } else {
-                        if (algoritmo == 'Soundex') {
+                        if (algoritmo === 'Soundex') {
 
                             valor = m4.matchSoundex(pacienteA, pacienteB, weights);
 
                         } else {
-                            valor = m3.matchAndes(pacienteA, pacienteB, weights); //Levensthein
+                            valor = m3.matchAndes(pacienteA, pacienteB, weights); // Levensthein
 
                         }
                     }
@@ -162,7 +154,7 @@ export class matching {
             }
 
 
-            //Se guardan los pares de pacientes en la collection matching
+            // Se guardan los pares de pacientes en la collection matching
 
             // this.guardarMatch({ paciente1: par[0], paciente2: par[1], match: valor },collection)
             //     .then((res => {
@@ -174,29 +166,27 @@ export class matching {
 
 
         })
-
-
     }
 
-    //Se crea la clave de Blocking
+    // Se crea la clave de Blocking
 
     crearClavesBlocking(paciente) {
 
-        var claves = [];
+        let claves = [];
 
-        // var anioNacimiento = "1900";
-        // var doc = "";
-        // if (paciente["fechaNacimiento"]) {
-        //     fecha = paciente["fechaNacimiento"].split("-");
-        //     //fecha= paciente["fechaNacimiento"].toISOString().split("-");
+        // let anioNacimiento = '1900';
+        // let doc = '';
+        // if (paciente['fechaNacimiento']) {
+        //     fecha = paciente['fechaNacimiento'].split('-');
+        //     //fecha= paciente['fechaNacimiento'].toISOString().split('-');
         //     anioNacimiento = fecha[0].toString();
         // }
         //
-        // if (paciente["documento"]) {
-        //     doc = paciente["documento"].substr(0, 4);
+        // if (paciente['documento']) {
+        //     doc = paciente['documento'].substr(0, 4);
         // }
         //
-        // var clave = libString.obtenerConsonante(paciente.apellido, 3) + libString.obtenerConsonante(paciente.nombre, 2) +
+        // let clave = LibString.obtenerConsonante(paciente.apellido, 3) + LibString.obtenerConsonante(paciente.nombre, 2) +
         //     anioNacimiento + doc;
         //
         // claves.push(clave);
@@ -205,17 +195,16 @@ export class matching {
         // claves.push(paciente.clavesBlocking[0]);
         // claves.push(paciente.clavesBlocking[1]);
         // claves.push(paciente.clavesBlocking[2]);
-        var algMetaphone = new metaphoneES();
-        var claveApellido = algMetaphone.metaphone(paciente["apellido"]);
-        var claveNombre = algMetaphone.metaphone(paciente["nombre"]);
-        claves.push(claveApellido.slice(0, 4) + claveNombre.slice(0, 3));   //Clave 1: Formada por las primeras 4 letras del apellido y tres del nombre, con metaphone
-        claves.push(claveApellido);  //Clave 2: metaphone sobre apellido
-        claves.push(claveNombre); //Clave 3: metaphone sobre nombre
-        //Se utiliza el algoritmo soundex para generar una nueva clave de Blocking
-        var algSoundex = new soundexES();
-        claves.push(algSoundex.soundex(paciente["apellido"] + paciente["nombre"]));
-        claves.push(algSoundex.soundex(paciente["apellido"]));
+        let algMetaphone = new MetaphoneES();
+        let claveApellido = algMetaphone.metaphone(paciente['apellido']);
+        let claveNombre = algMetaphone.metaphone(paciente['nombre']);
+        claves.push(claveApellido.slice(0, 4) + claveNombre.slice(0, 3));   // Clave 1: Formada por las primeras 4 letras del apellido y tres del nombre, con metaphone
+        claves.push(claveApellido);  // Clave 2: metaphone sobre apellido
+        claves.push(claveNombre); // Clave 3: metaphone sobre nombre
+        // Se utiliza el algoritmo soundex para generar una nueva clave de Blocking
+        let algSoundex = new SoundexES();
+        claves.push(algSoundex.soundex(paciente['apellido'] + paciente['nombre']));
+        claves.push(algSoundex.soundex(paciente['apellido']));
         return claves;
-
     }
 }

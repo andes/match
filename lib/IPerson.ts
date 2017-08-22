@@ -1,7 +1,7 @@
-export interface IPerson{
+export interface IPerson {
     identity: string,
-	firstname: string,
-	lastname: string,
-	birthDate?: string,
+    firstname: string,
+    lastname: string,
+    birthDate?: string,
     gender?: string
 }

@@ -1,6 +1,6 @@
-export interface IWeight{
+export interface IWeight {
     identity: number,
-	name: number,
-	gender: number,
-	birthDate: number
+    name: number,
+    gender: number,
+    birthDate: number
 }

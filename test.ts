@@ -1,81 +1,79 @@
 import { IPerson } from './lib/IPerson';
 import { IWeight } from './lib/IWeight';
-import {matchingAndes} from './lib/matchingAndes';
-import {matchingSoundexES} from './lib/matchingSoundexES';
-import {soundexES} from './lib/soundexES';
+import { MatchingAndes } from './lib/MatchingAndes';
+import { MatchingSoundexES } from './lib/MatchingSoundexES';
+import { SoundexES } from './lib/SoundexES';
 import * as distance from 'jaro-winkler';
 
-var weights = {
-	identity: 0.2,
-	name: 0.3,
-	gender: 0.4,
-	birthDate: 0.1
+let weights = {
+    identity: 0.2,
+    name: 0.3,
+    gender: 0.4,
+    birthDate: 0.1
 };
 
-/*Estos ejemplos de paciente están basados en un subconjunto de campos de FHIR
+/*
+Estos ejemplos de paciente están basados en un subconjunto de campos de FHIR
 la idea es comparar un set de datos básicos.
 */
 
-//Ejemplos de Pacientes a comparar
+// Ejemplos de Pacientes a comparar
 
-var pacienteA = {
-	identity: "302569851",
-	firstname: "Gozalobbb",
-	lastname: "Carranza",
-	birthDate: '01-01-1980',
-    gender: "male"
+let pacienteA = {
+    identity: '302569851',
+    firstname: 'Gozalobbb',
+    lastname: 'Carranza',
+    birthDate: '01-01-1980',
+    gender: 'male'
 };
 
-var pacienteB = {
-	identity: "35",
-	firstname: "Gonzalo",
-	lastname: "Carranza",
+let pacienteB = {
+    identity: '35',
+    firstname: 'Gonzalo',
+    lastname: 'Carranza',
     birthDate: '01-01-1980',
-	gender: "male"
+    gender: 'male'
 };
 
 // var m = new machingDeterministico();
 // console.log(m.maching(pacienteA, pacienteB, weights));
 
-var so = new soundexES();
+let so = new SoundexES();
 
-var tests = [
-  "shonatan peres",
-  "yonathan perez",
-  "Giraldo",
-  "Jiraldo",
-  "Walter",
-  "cien",
-  "sein",
-  "complicado",
-  "xocola",
-  "chocolate",
-  "Fernández hugo",
-  "Hernandez Hugo",
-  "Silvina Roga",
-  "Silvia Roa",
-  "Silvana Rosa"
+let tests = [
+    'shonatan peres',
+    'yonathan perez',
+    'Giraldo',
+    'Jiraldo',
+    'Walter',
+    'cien',
+    'sein',
+    'complicado',
+    'xocola',
+    'chocolate',
+    'Fernández hugo',
+    'Hernandez Hugo',
+    'Silvina Roga',
+    'Silvia Roa',
+    'Silvana Rosa'
 ];
 
-
-
-
-var m = new matchingSoundexES();
-var dato = m.matchSoundex(pacienteA, pacienteB, weights);
+let m = new MatchingSoundexES();
+let dato = m.matchSoundex(pacienteA, pacienteB, weights);
 console.log(dato);
 
-var m1 = new matchingAndes();
+let m1 = new MatchingAndes();
 // var dato1 = m1.maching(pacienteA, pacienteB, weights);
-// console.log("matchig: ", dato1);
+// console.log('matchig: ', dato1);
 
-console.log('Provincia',m1.levenshtein('Neuquén', 'Nqn'));
+console.log('Provincia', m1.levenshtein('Neuquén', 'Nqn'));
 
 // for(var i=0;i<tests.length;i++){
 // 	var dato = so.soundex(tests[i]);
-// 	var dato1 = "";
+// 	var dato1 = '';
 // 	if(i>0)
 // 		dato1 = so.soundex(tests[i-1]);
 
-// 	//console.log(tests[i],': ',dato," -- ",distance(dato,dato1));
+// 	//console.log(tests[i],': ',dato,' -- ',distance(dato,dato1));
 // 	console.log(tests[i],': ', dato);
 // }

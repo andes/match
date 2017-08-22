@@ -1,12 +1,11 @@
-export class libString {
-
+export class LibString {
     public static preprocessInput(input) {
         return input.trim().replace(/[!@#$%^&*()_+-=]/, '').replace(/\s\s+/g, ' ');
     }
 
     public static maxLargo(stringAMin, stringBMin) {
-        var longA = stringAMin.length;
-        var longB = stringBMin.length;
+        let longA = stringAMin.length;
+        let longB = stringBMin.length;
 
         if (longA > longB) {
             return longA
@@ -16,8 +15,8 @@ export class libString {
     }
 
     public static minLargo(stringAMin, stringBMin) {
-        var longA = stringAMin.length;
-        var longB = stringBMin.length;
+        let longA = stringAMin.length;
+        let longB = stringBMin.length;
 
         if (longA < longB) {
             return longA
@@ -30,10 +29,10 @@ export class libString {
     public static obtenerConsonante(stringA, max) {
         /*Se obtienen las consonantes de una cadena.
         La cantidad de consonantes a devolver están limitadas al valor max  */
-        var i = 0;
-        var salida = "";
+        let i = 0;
+        let salida = '';
         while (i < stringA.length && salida.length < max) {
-            if (libString.esConsonante(stringA[i])) {
+            if (LibString.esConsonante(stringA[i])) {
                 salida += stringA[i];
             }
             i++;
@@ -45,37 +44,38 @@ export class libString {
     }
 
     private static esConsonante(c) {
-        var consonantes = "bcdfghjklmnpqrstvwxyz";
-        if (consonantes.indexOf(c.toLowerCase()) < 0)
+        let consonantes = 'bcdfghjklmnpqrstvwxyz';
+        if (consonantes.indexOf(c.toLowerCase()) < 0) {
             return false;
-        else
+        } else {
             return true;
+        }
     }
 
     public static toTitleCase(str) {
 
-        return str.replace(/\w\S*/g, function(txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+        return str.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
     }
 
     public static getCleanedString(cadena) {
         // Definimos los caracteres que queremos eliminar
-        var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?,.";   // Los eliminamos todos
-        for (var i = 0; i < specialChars.length; i++) {
-            cadena = cadena.replace(new RegExp("\\" + specialChars[i], 'gi'), '');
+        let specialChars = '!@#$^&%*()+=-[]\/{}|:<>?,.';   // Los eliminamos todos
+        for (let i = 0; i < specialChars.length; i++) {
+            cadena = cadena.replace(new RegExp('\\' + specialChars[i], 'gi'), '');
         }     // Lo queremos devolver limpio en minusculas
         cadena = cadena.toLowerCase();   // Quitamos espacios y los sustituimos por _ porque nos gusta mas asi
-        cadena = cadena.replace(/ /g, "_");   // Quitamos acentos y "ñ". Fijate en que va sin comillas el primer parametro
-        cadena = cadena.replace(/á/gi, "a");
-        cadena = cadena.replace(/é/gi, "e");
-        cadena = cadena.replace(/í/gi, "i");
-        cadena = cadena.replace(/ó/gi, "o");
-        cadena = cadena.replace(/ú/gi, "u");
-        cadena = cadena.replace(/ñ/gi, "n");
+        cadena = cadena.replace(/ /g, '_');   // Quitamos acentos y 'ñ'. Fijate en que va sin comillas el primer parametro
+        cadena = cadena.replace(/á/gi, 'a');
+        cadena = cadena.replace(/é/gi, 'e');
+        cadena = cadena.replace(/í/gi, 'i');
+        cadena = cadena.replace(/ó/gi, 'o');
+        cadena = cadena.replace(/ú/gi, 'u');
+        cadena = cadena.replace(/ñ/gi, 'n');
         return cadena;
     }
 
     public static makePattern(search_string) {
-        var accented = {
+        let accented = {
             'A': '[Aa\xaa\xc0-\xc5\xe0-\xe5\u0100-\u0105\u01cd\u01ce\u0200-\u0203\u0226\u0227\u1d2c\u1d43\u1e00\u1e01\u1e9a\u1ea0-\u1ea3\u2090\u2100\u2101\u213b\u249c\u24b6\u24d0\u3371-\u3374\u3380-\u3384\u3388\u3389\u33a9-\u33af\u33c2\u33ca\u33df\u33ff\uff21\uff41]',
             'B': '[Bb\u1d2e\u1d47\u1e02-\u1e07\u212c\u249d\u24b7\u24d1\u3374\u3385-\u3387\u33c3\u33c8\u33d4\u33dd\uff22\uff42]',
             'C': '[Cc\xc7\xe7\u0106-\u010d\u1d9c\u2100\u2102\u2103\u2105\u2106\u212d\u216d\u217d\u249e\u24b8\u24d2\u3376\u3388\u3389\u339d\u33a0\u33a4\u33c4-\u33c7\uff23\uff43]',
@@ -105,32 +105,27 @@ export class libString {
         };
 
         // escape meta characters
-        search_string = search_string.replace(/([|()[{.+*?^$\\])/g, "\\$1");
+        search_string = search_string.replace(/([|()[{.+*?^$\\])/g, '\\$1');
 
         // split into words
-        var words = search_string.split(/\s+/);
+        let words = search_string.split(/\s+/);
 
         // sort by length
-        var length_comp = function(a, b) {
+        let length_comp = function (a, b) {
             return b.length - a.length;
         };
         words.sort(length_comp);
 
         // replace characters by their compositors
-        var accent_replacer = function(chr) {
+        let accent_replacer = function (chr) {
             return accented[chr.toUpperCase()] || chr;
         }
-        for (var i = 0; i < words.length; i++) {
+        for (let i = 0; i < words.length; i++) {
             words[i] = words[i].replace(/\S/g, accent_replacer);
         }
 
         // join as alternatives
-        var regexp = words.join("|");
+        let regexp = words.join('|');
         return new RegExp(regexp, 'g');
     }
-
-
-
-
-
 }

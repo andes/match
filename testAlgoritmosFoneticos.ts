@@ -1,11 +1,10 @@
 import * as distance from 'jaro-winkler';
-import { IPerson } from './IPerson';
-import { IWeight } from './IWeight';
-import { metaphoneES } from './metaphoneES';
-import { soundexES} from './soundexES';
+import { IPerson } from './lib/IPerson';
+import { IWeight } from './lib/IWeight';
+import { MetaphoneES } from './lib/MetaphoneES';
+import { SoundexES } from './lib/SoundexES';
 
+console.log(distance('Natalia', 'Carina', { caseSensitive: false }));
 
-  console.log(distance('Natalia', 'Carina', { caseSensitive: false }));
-
-var algSoundex = new soundexES();
+let algSoundex = new SoundexES();
 console.log(algSoundex.soundex('Abadia'));

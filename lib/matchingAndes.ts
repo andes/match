@@ -1,8 +1,8 @@
 import { IPerson } from './IPerson';
 import { IWeight } from './IWeight';
-import { libString } from './libString';
+import { LibString } from './LibString';
 
-export class matchingAndes {
+export class MatchingAndes {
 
     /**
      * @description stringMatching - Devuelve la cantidad de coincidencias sobre la mayor longitud
@@ -11,17 +11,18 @@ export class matchingAndes {
      * @author Hugo Fernández hfernandez@neuquen.gov.ar
      */
     private stringMatching(stringA, stringB) {
-        var stringAMin = stringA.toLowerCase();
-        var stringBMin = stringB.toLowerCase();
+        let stringAMin = stringA.toLowerCase();
+        let stringBMin = stringB.toLowerCase();
 
-        var maxLen = libString.maxLargo(stringAMin, stringBMin);
-        var minLen = libString.minLargo(stringAMin, stringBMin);
-        var coincidencias = 0;
+        let maxLen = LibString.maxLargo(stringAMin, stringBMin);
+        let minLen = LibString.minLargo(stringAMin, stringBMin);
+        let coincidencias = 0;
 
 
-        for (var i = 0; i < minLen; i++) {
-            if (stringAMin.charAt(i) == stringBMin.charAt(i))
+        for (let i = 0; i < minLen; i++) {
+            if (stringAMin.charAt(i) === stringBMin.charAt(i)) {
                 coincidencias++
+            }
         }
 
         return coincidencias / maxLen;
@@ -34,10 +35,11 @@ export class matchingAndes {
      * @author Hugo Fernández hfernandez@neuquen.gov.ar
      */
     private sexMatching(sexA, sexB) {
-        if (sexA == sexB)
-            return 1
-        else
-            return 0
+        if (sexA === sexB) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     /**
@@ -47,11 +49,11 @@ export class matchingAndes {
      * @author Hugo Fernández hfernandez@neuquen.gov.ar
      */
     private identityMatching(idA, idB) {
-        if (idA == idB)
-            return 1
-        else
-            return 0
-
+        if (idA === idB) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
 
@@ -62,39 +64,42 @@ export class matchingAndes {
      * @author Hugo Fernández hfernandez@neuquen.gov.ar
      */
     public levenshtein(stringA: string, stringB: string): number {
-        //var s1 = libString.preprocessInput(stringA.toLowerCase());
-        //var s2 = libString.preprocessInput(stringB.toLowerCase());
-        var s1 = stringA;
-        var s2 = stringB;
+        // let s1 = LibString.preprocessInput(stringA.toLowerCase());
+        // let s2 = LibString.preprocessInput(stringB.toLowerCase());
+        let s1 = stringA;
+        let s2 = stringB;
 
-        var maxLen = libString.maxLargo(s1, s2);
+        let maxLen = LibString.maxLargo(s1, s2);
 
-        var l1 = s1.length;
-        var l2 = s2.length;
-        var d = [];
-        var c = 0;
-        var a = 0;
+        let l1 = s1.length;
+        let l2 = s2.length;
+        let d = [];
+        let c = 0;
+        let a = 0;
 
-        if (l1 == 0)
+        if (l1 === 0) {
             return 0;
+        }
 
-        if (l2 == 0)
+        if (l2 === 0) {
             return 0;
+        }
 
         a = l1 + 1;
 
-        for (var i = 0; i <= l1; d[i] = i++);
-        for (var j = 0; j <= l2; d[j * a] = j++);
+        for (let i = 0; i <= l1; d[i] = i++) { };
+        for (let j = 0; j <= l2; d[j * a] = j++) { };
 
-        for (var i = 1; i <= l1; i++) {
-            for (var j = 1; j <= l2; j++) {
-                if (s1[i - 1] == s2[j - 1])
+        for (let i = 1; i <= l1; i++) {
+            for (let j = 1; j <= l2; j++) {
+                if (s1[i - 1] === s2[j - 1]) {
                     c = 0;
-                else
+                } else {
                     c = 1;
-                var r = d[j * a + i - 1] + 1;
-                var s = d[(j - 1) * a + i] + 1;
-                var t = d[(j - 1) * a + i - 1] + c;
+                }
+                let r = d[j * a + i - 1] + 1;
+                let s = d[(j - 1) * a + i] + 1;
+                let t = d[(j - 1) * a + i - 1] + c;
 
                 d[j * a + i] = Math.min(Math.min(r, s), t);
             }
@@ -112,23 +117,20 @@ export class matchingAndes {
      * @author Hugo Fernández hfernandez@neuquen.gov.ar
      */
     public matchAndes(identidadA: IPerson, identidadB: IPerson, weights: IWeight): number {
-        var completeNameA = identidadA.firstname + identidadA.lastname;
-        var completeNameB = identidadB.firstname + identidadB.lastname;
-        var v1 = weights.name * this.levenshtein(libString.preprocessInput(completeNameA.toLocaleLowerCase()), libString.preprocessInput(completeNameB.toLowerCase()));
-        var v2 = weights.gender;
-        if (identidadA.gender != null) {
+        let completeNameA = identidadA.firstname + identidadA.lastname;
+        let completeNameB = identidadB.firstname + identidadB.lastname;
+        let v1 = weights.name * this.levenshtein(LibString.preprocessInput(completeNameA.toLocaleLowerCase()), LibString.preprocessInput(completeNameB.toLowerCase()));
+        let v2 = weights.gender;
+        if (identidadA.gender !== null) {
             v2 = weights.gender * this.sexMatching(identidadA.gender, identidadB.gender);
-        } 
-        var v3 = weights.birthDate;
-        if (identidadA.birthDate != null) {
+        }
+        let v3 = weights.birthDate;
+        if (identidadA.birthDate !== null) {
             v3 = weights.birthDate * this.stringMatching(identidadA.birthDate, identidadB.birthDate);
         }
-        var v4 = weights.identity * this.levenshtein(identidadA.identity, identidadB.identity);
-        
-        var value = Math.round((v1 + v2 + v3 + v4) * 100) / 100;
+        let v4 = weights.identity * this.levenshtein(identidadA.identity, identidadB.identity);
+        let value = Math.round((v1 + v2 + v3 + v4) * 100) / 100;
 
         return value;
     }
-
-
-}//fin class
+}
