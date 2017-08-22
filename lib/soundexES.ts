@@ -47,7 +47,7 @@ export class SoundexES {
             };
         r = d
             .map(function (v, i) {
-                return codes[v]
+                return codes[v];
             })
             .filter(function (v, i) {
                 return v !== d[i - 1];
@@ -55,5 +55,5 @@ export class SoundexES {
             .join('');
 
         return r;
-    };
+    }
 }

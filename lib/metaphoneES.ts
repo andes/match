@@ -88,9 +88,9 @@ export class MetaphoneES {
         let end_of_string_pos: number = string_length - 1;
         let original_string: string = data + ' ';
         // Let's replace some spanish characters  easily confused
-        original_string = this.strtr(original_string.toLowerCase())
+        original_string = this.strtr(original_string.toLowerCase());
         // convert string to uppercase
-        original_string = original_string.toUpperCase()
+        original_string = original_string.toUpperCase();
 
         // main loop
         while ((meta_key.length < key_length) && (current_pos <= original_string.length)) {
@@ -107,28 +107,28 @@ export class MetaphoneES {
                 // or already have been replaced  because they share the same
                 // sound like 'B' for 'V' and 'S' for 'Z'
                 if (this.string_at(original_string, current_pos, 1, ['D', 'F', 'J', 'K', 'M', 'N', 'P', 'T', 'V', 'L', 'Y'])) {
-                    meta_key += current_char
+                    meta_key += current_char;
 
                     // increment by two if a repeated letter is found
                     if (original_string.substr(current_pos + 1, 1) === current_char) {
-                        current_pos += 2
+                        current_pos += 2;
                     } else { // increment only by one
-                        current_pos += 1
+                        current_pos += 1;
                     }
                 } else {  // check consonants with similar confusing sounds
                     switch (current_char) {
                         case 'C':
                             if (original_string.substr(current_pos + 1, 1) === 'H') {
-                                current_pos += 2
+                                current_pos += 2;
                             } else {
                                 // special case 'acción', 'reacción',etc.
                                 if (original_string.substr(current_pos + 1, 1) === 'C') {
-                                    meta_key += 'X'
-                                    current_pos += 2
+                                    meta_key += 'X';
+                                    current_pos += 2;
                                 } else {// special case 'cesar', 'cien', 'cid', 'conciencia'
                                     if (this.string_at(original_string, current_pos, 2, ['CE', 'CI'])) {
-                                        meta_key += 'Z'
-                                        current_pos += 2
+                                        meta_key += 'Z';
+                                        current_pos += 2;
                                     } else {
                                         meta_key += 'K';
                                         current_pos += 1;
@@ -140,7 +140,7 @@ export class MetaphoneES {
                             // special case 'gente', 'ecologia',etc
                             if (this.string_at(original_string, current_pos, 2, ['GE', 'GI'])) {
                                 meta_key += 'J';
-                                current_pos += 2
+                                current_pos += 2;
                             } else {
                                 meta_key += 'G';
                                 current_pos += 1;

@@ -8,9 +8,9 @@ export class LibString {
         let longB = stringBMin.length;
 
         if (longA > longB) {
-            return longA
+            return longA;
         } else {
-            return longB
+            return longB;
         }
     }
 
@@ -19,9 +19,9 @@ export class LibString {
         let longB = stringBMin.length;
 
         if (longA < longB) {
-            return longA
+            return longA;
         } else {
-            return longB
+            return longB;
         }
     }
 
@@ -119,7 +119,8 @@ export class LibString {
         // replace characters by their compositors
         let accent_replacer = function (chr) {
             return accented[chr.toUpperCase()] || chr;
-        }
+        };
+
         for (let i = 0; i < words.length; i++) {
             words[i] = words[i].replace(/\S/g, accent_replacer);
         }

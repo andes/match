@@ -4,8 +4,7 @@ import { MatchingMetaphone } from './MatchingMetaphone';
 import { MatchingSoundexES } from './MatchingSoundexES';
 import { MetaphoneES } from './MetaphoneES';
 import { SoundexES } from './SoundexES';
-import { IPerson } from './IPerson'
-
+import { IPerson } from './IPerson';
 
 export class Matching {
 
@@ -165,7 +164,7 @@ export class Matching {
             //     }));
 
 
-        })
+        });
     }
 
     // Se crea la clave de Blocking

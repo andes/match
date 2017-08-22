@@ -29,7 +29,7 @@ export class MatchingMetaphone {
 
         for (let i = 0; i < minLen; i++) {
             if (stringAMin.charAt(i) === stringBMin.charAt(i)) {
-                coincidencias++
+                coincidencias++;
             }
         }
 

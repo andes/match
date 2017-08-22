@@ -21,7 +21,7 @@ export class MatchingAndes {
 
         for (let i = 0; i < minLen; i++) {
             if (stringAMin.charAt(i) === stringBMin.charAt(i)) {
-                coincidencias++
+                coincidencias++;
             }
         }
 
@@ -87,8 +87,8 @@ export class MatchingAndes {
 
         a = l1 + 1;
 
-        for (let i = 0; i <= l1; d[i] = i++) { };
-        for (let j = 0; j <= l2; d[j * a] = j++) { };
+        for (let i = 0; i <= l1; d[i] = i++) { }
+        for (let j = 0; j <= l2; d[j * a] = j++) { }
 
         for (let i = 1; i <= l1; i++) {
             for (let j = 1; j <= l2; j++) {
@@ -105,7 +105,7 @@ export class MatchingAndes {
             }
         }
 
-        return 1 - ((d[l2 * a + l1]) / maxLen)
+        return 1 - ((d[l2 * a + l1]) / maxLen);
     }
 
 

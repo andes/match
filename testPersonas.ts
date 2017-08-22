@@ -1,5 +1,5 @@
 import { Matching } from './lib/matching';
-import { IPerson } from './lib/IPerson'
+import { IPerson } from './lib/IPerson';
 import * as distance from 'jaro-winkler';
 
 let weights = {
