@@ -60,6 +60,7 @@ let tests = [
 
 let m = new MatchingSoundexES();
 let dato = m.matchSoundex(pacienteA, pacienteB, weights);
+// tslint:disable-next-line:no-console
 console.log(dato);
 
 let m1 = new MatchingAndes();

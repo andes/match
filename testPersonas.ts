@@ -32,4 +32,5 @@ let pacienteB = {
 
 let m1 = new Matching();
 let resultado = m1.matchPersonas(pacienteA, pacienteB, weights, 'Levensthein');
+// tslint:disable-next-line:no-console
 console.log('matchig: ', resultado);
