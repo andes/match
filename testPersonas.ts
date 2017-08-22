@@ -1,6 +1,9 @@
 import { Matching } from './lib/matching';
 import { IPerson } from './lib/IPerson';
 import * as distance from 'jaro-winkler';
+import * as debug from 'debug';
+
+let log = debug('match');
 
 let weights = {
     identity: 0.3,
@@ -32,5 +35,4 @@ let pacienteB = {
 
 let m1 = new Matching();
 let resultado = m1.matchPersonas(pacienteA, pacienteB, weights, 'Levensthein');
-// tslint:disable-next-line:no-console
-console.log('matchig: ', resultado);
+log('matchig: ', resultado);

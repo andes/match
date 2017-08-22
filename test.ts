@@ -4,6 +4,9 @@ import { MatchingAndes } from './lib/MatchingAndes';
 import { MatchingSoundexES } from './lib/MatchingSoundexES';
 import { SoundexES } from './lib/SoundexES';
 import * as distance from 'jaro-winkler';
+import * as debug from 'debug';
+
+let log = debug('match');
 
 let weights = {
     identity: 0.2,
@@ -35,9 +38,6 @@ let pacienteB = {
     gender: 'male'
 };
 
-// var m = new machingDeterministico();
-// console.log(m.maching(pacienteA, pacienteB, weights));
-
 let so = new SoundexES();
 
 let tests = [
@@ -60,22 +60,7 @@ let tests = [
 
 let m = new MatchingSoundexES();
 let dato = m.matchSoundex(pacienteA, pacienteB, weights);
-// tslint:disable-next-line:no-console
-console.log(dato);
+log(dato);
 
 let m1 = new MatchingAndes();
-// var dato1 = m1.maching(pacienteA, pacienteB, weights);
-// console.log('matchig: ', dato1);
-
-// tslint:disable-next-line:no-console
-console.log('Provincia', m1.levenshtein('Neuquén', 'Nqn'));
-
-// for(var i=0;i<tests.length;i++){
-// 	var dato = so.soundex(tests[i]);
-// 	var dato1 = '';
-// 	if(i>0)
-// 		dato1 = so.soundex(tests[i-1]);
-
-// 	//console.log(tests[i],': ',dato,' -- ',distance(dato,dato1));
-// 	console.log(tests[i],': ', dato);
-// }
+log('Provincia', m1.levenshtein('Neuquén', 'Nqn'));

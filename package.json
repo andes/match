@@ -1,6 +1,6 @@
 {
     "name": "@andes/match",
-    "version": "1.1.4",
+    "version": "1.1.5",
     "description": "Algoritmos de matcheo para MPI",
     "main": "index.js",
     "scripts": {
@@ -26,6 +26,7 @@
     "homepage": "https://github.com/andes/match#readme",
     "dependencies": {
         "body-parser": "^1.15.2",
+        "debug": "^3.0.0",
         "express": "^4.14.0",
         "http": "0.0.0",
         "jaro-winkler": "^0.2.8",

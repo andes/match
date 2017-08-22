@@ -8,8 +8,6 @@ import { MetaphoneES } from './MetaphoneES';
 
 
 export class MatchingMetaphone {
-
-    //  console.log(distance('30643636', '30643633', { caseSensitive: false }));
     private sexMatching(sexA, sexB) {
         if (sexA === sexB) {
             return 1;

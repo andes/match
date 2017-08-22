@@ -3,10 +3,10 @@ import { IPerson } from './lib/IPerson';
 import { IWeight } from './lib/IWeight';
 import { MetaphoneES } from './lib/MetaphoneES';
 import { SoundexES } from './lib/SoundexES';
+import * as debug from 'debug';
 
-// tslint:disable-next-line:no-console
-console.log(distance('Natalia', 'Carina', { caseSensitive: false }));
+let log = debug('match');
 
+log(distance('Natalia', 'Carina', { caseSensitive: false }));
 let algSoundex = new SoundexES();
-// tslint:disable-next-line:no-console
-console.log(algSoundex.soundex('Abadia'));
+log(algSoundex.soundex('Abadia'));
