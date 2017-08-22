@@ -7,8 +7,6 @@ import * as distance from 'jaro-winkler';
 
 
 export class MatchingSoundexES {
-
-    //  console.log(distance('30643636', '30643633', { caseSensitive: false }));
     private sexMatching(sexA, sexB) {
         if (sexA === sexB) {
             return 1;

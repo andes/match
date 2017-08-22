@@ -151,19 +151,6 @@ export class Matching {
 
                 listaMatch.push({ paciente1: par[0], paciente2: par[1], match: valor });
             }
-
-
-            // Se guardan los pares de pacientes en la collection matching
-
-            // this.guardarMatch({ paciente1: par[0], paciente2: par[1], match: valor },collection)
-            //     .then((res => {
-            //         console.log('Se guarda matcheo', valor);
-            //     }))
-            //     .catch((err => {
-            //         console.log('Error al guardar matcheo', err);
-            //     }));
-
-
         });
     }
 
