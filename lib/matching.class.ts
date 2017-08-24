@@ -16,7 +16,7 @@ export class Matching {
         }
     }
 
-    matchPersonas(persona1, persona2, weights: IWeight, algoritmo: 'Jaro Winkler' | 'Metaphone' | 'Soundex' | 'Levensthein') {
+    matchPersonas(persona1, persona2, weights: IWeight, algoritmo: 'Jaro Winkler' | 'Metaphone' | 'Soundex' | 'Levenshtein') {
         let pacienteA;
         let pacienteB;
         let valor: number;
