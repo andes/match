@@ -1,10 +1,9 @@
-import { LibString } from './LibString';
-import { IPerson } from './IPerson';
-import { IWeight } from './IWeight';
-import { SoundexES } from './SoundexES';
+import { SoundexES } from './soundexES.class';
+import { IWeight } from './weight.interface';
+import { IPerson } from './person.interface';
+import { MetaphoneES } from './metaphoneES.class';
+import { LibString } from './libString.class';
 import * as distance from 'jaro-winkler';
-
-
 
 export class MatchingSoundexES {
     private sexMatching(sexA, sexB) {

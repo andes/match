@@ -1,7 +1,7 @@
-import { LibString } from './LibString';
+import { IWeight } from './weight.interface';
+import { IPerson } from './person.interface';
+import { LibString } from './libString.class';
 import * as distance from 'jaro-winkler';
-import { IPerson } from './IPerson';
-import { IWeight } from './IWeight';
 
 export class MatchingJaroWinkler {
     private sexMatching(sexA, sexB) {

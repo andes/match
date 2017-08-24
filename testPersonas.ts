@@ -1,5 +1,4 @@
-import { Matching } from './lib/matching';
-import { IPerson } from './lib/IPerson';
+import { Matching } from './lib/matching.class';
 import * as distance from 'jaro-winkler';
 import * as debug from 'debug';
 

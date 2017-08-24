@@ -1,8 +1,5 @@
+import { SoundexES } from './lib/soundexES.class';
 import * as distance from 'jaro-winkler';
-import { IPerson } from './lib/IPerson';
-import { IWeight } from './lib/IWeight';
-import { MetaphoneES } from './lib/MetaphoneES';
-import { SoundexES } from './lib/SoundexES';
 import * as debug from 'debug';
 
 let log = debug('match');

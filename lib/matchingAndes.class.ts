@@ -1,6 +1,6 @@
-import { IPerson } from './IPerson';
-import { IWeight } from './IWeight';
-import { LibString } from './LibString';
+import { IWeight } from './weight.interface';
+import { IPerson } from './person.interface';
+import { LibString } from './libString.class';
 
 export class MatchingAndes {
 

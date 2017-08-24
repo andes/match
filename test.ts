@@ -1,8 +1,6 @@
-import { IPerson } from './lib/IPerson';
-import { IWeight } from './lib/IWeight';
-import { MatchingAndes } from './lib/MatchingAndes';
-import { MatchingSoundexES } from './lib/MatchingSoundexES';
-import { SoundexES } from './lib/SoundexES';
+import { MatchingAndes } from './lib/matchingAndes.class';
+import { MatchingSoundexES } from './lib/matchingSoundexES.class';
+import { SoundexES } from './lib/soundexES.class';
 import * as distance from 'jaro-winkler';
 import * as debug from 'debug';
 

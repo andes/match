@@ -1,13 +1,12 @@
-import { MatchingAndes } from './MatchingAndes';
-import { MatchingJaroWinkler } from './MatchingJaroWinkler';
-import { MatchingMetaphone } from './MatchingMetaphone';
-import { MatchingSoundexES } from './MatchingSoundexES';
-import { MetaphoneES } from './MetaphoneES';
-import { SoundexES } from './SoundexES';
-import { IPerson } from './IPerson';
+import { IWeight } from './weight.interface';
+import { SoundexES } from './soundexES.class';
+import { MetaphoneES } from './metaphoneES.class';
+import { MatchingSoundexES } from './matchingSoundexES.class';
+import { MatchingAndes } from './matchingAndes.class';
+import { MatchingMetaphone } from './matchingMetaphone.class';
+import { MatchingJaroWinkler } from './matchingJaroWinkler.class';
 
 export class Matching {
-
     convertirFecha(fecha) {
         if (typeof (fecha) !== 'string') {
             let fecha1 = new Date(fecha);
@@ -17,8 +16,7 @@ export class Matching {
         }
     }
 
-
-    matchPersonas(persona1, persona2, weights, algoritmo) {
+    matchPersonas(persona1, persona2, weights: IWeight, algoritmo: 'Jaro Winkler' | 'Metaphone' | 'Soundex' | 'Levensthein') {
         let pacienteA;
         let pacienteB;
         let valor: number;
