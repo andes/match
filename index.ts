@@ -1,2 +1,2 @@
 
-export * from './lib/matching';
+export * from './lib/matching.class';
