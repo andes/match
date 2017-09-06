@@ -8,7 +8,8 @@
         "start": "concurrently -r \"npm run tsc:w\" \"npm run node\" ",
         "node": "node ./index.js",
         "tsc": "tsc",
-        "tsc:w": "tsc -w"
+        "tsc:w": "tsc -w",
+        "test": "mocha -r ts-node/register test/**/*.ts"
     },
     "repository": {
         "type": "git",
@@ -26,6 +27,15 @@
     "homepage": "https://github.com/andes/match#readme",
     "dependencies": {
         "debug": "^3.0.0",
-        "jaro-winkler": "^0.2.8"
+        "jaro-winkler": "^0.2.8",
+        "typescript": "^2.5.2"
+    },
+    "devDependencies": {
+        "@types/chai": "^4.0.4",
+        "@types/mocha": "^2.2.42",
+        "chai": "^4.1.2",
+        "mocha": "^3.5.0",
+        "sinon": "^3.2.1",
+        "ts-node": "^3.3.0"
     }
 }
