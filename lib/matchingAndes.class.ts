@@ -48,7 +48,7 @@ export class MatchingAndes {
      * @param {int} idB - Documento del pacienteB
      * @author Hugo Fernández hfernandez@neuquen.gov.ar
      */
-    private identityMatching(idA, idB) {
+    public identityMatching(idA, idB) {
         if (idA === idB) {
             return 1;
         } else {
