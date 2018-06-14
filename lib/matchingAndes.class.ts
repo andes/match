@@ -125,7 +125,7 @@ export class MatchingAndes {
             v2 = weights.gender * this.sexMatching(identidadA.gender, identidadB.gender);
         }
         let v3 = weights.birthDate;
-        if (identidadA.birthDate !== null) {
+        if (identidadA.birthDate !== null && identidadB.birthDate !== null) {
             v3 = weights.birthDate * this.stringMatching(identidadA.birthDate, identidadB.birthDate);
         }
         let v4 = weights.identity * this.levenshtein(identidadA.identity, identidadB.identity);
